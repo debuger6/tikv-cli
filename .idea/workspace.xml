@@ -21,7 +21,11 @@
     </option>
   </component>
   <component name="GOROOT" path="D:\Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1WSroVt5GpfuHvtDJepNNwNgmKj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -260,7 +264,7 @@
       <option name="presentableId" value="Default" />
       <updated>1579154012015</updated>
       <workItem from="1579154019165" duration="15509000" />
-      <workItem from="1579225703874" duration="1830000" />
+      <workItem from="1579225703874" duration="2485000" />
     </task>
     <servers />
   </component>
