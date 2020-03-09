@@ -10,9 +10,10 @@ var (
 		"GET":   "GET key",
 		"SET":   "SET key value",
 		"DEL":   "DEL key [key ...]",
+		"FLUSHALL": "DEL all keys",
 		"SCAN":  "SCAN start_key end_key limit",
 		"RSCAN": "RSCAN start_key end_key limit",
-		"KEYS":  "KEYS pattern",
+		"KEYS":  "KEYS prefix_key",
 		"IT": "it",
 	}
 )
@@ -28,6 +29,7 @@ Commands:
         SCAN
         RSCAN
         KEYS
+		FLUSHALL
 	`
 	fmt.Println(msg)
 }

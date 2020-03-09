@@ -48,7 +48,7 @@ func cliConnect() {
 		client, err = rawkv.NewClient(context.Background(), addrs, conf)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
-			os.Exit(-1)
+			os.Exit(0)
 		}
 	}
 }
@@ -81,7 +81,7 @@ func repl() {
 			if cmd == "help" || cmd == "?" {
 				console.PrintHelp(cmds)
 			} else if cmd == "quit" || cmd == "exit" {
-				os.Exit(0)
+				return
 			} else {
 				console.CliSendCmd(client, cmds)
 			}

@@ -104,7 +104,29 @@ func CliSendCmd(client *rawkv.Client, cmds []string) {
 			fmt.Println(string(keys[i]))
 		}
 		startKey = string(keys[lines-1])
-		fmt.Println(`Type "it" for more`)
+		if startKey != "" {
+			fmt.Println(`Type "it" for more`)
+		}
+	case "FLUSHALL":
+		curKey := ""
+		for {
+			keys, _, err := client.Scan(context.Background(), []byte(curKey), nil, 1000)
+			if err != nil {
+				fmt.Println(err)
+				return
+			}
+
+			if err := client.BatchDelete(context.Background(), keys); err != nil {
+				fmt.Println(err)
+				return
+			}
+			lines := len(keys)
+			if lines <= 1 {
+				return
+			}
+			curKey = string(keys[lines-1])
+		}
+
 	case "IT":
 		if startKey == "" {
 			return
@@ -120,11 +142,13 @@ func CliSendCmd(client *rawkv.Client, cmds []string) {
 		fl := len(strconv.Itoa(lines))
 		formatStr := fmt.Sprintf("%%%ds) ", fl)
 		for i := 1; i < lines; i++ {
-			num := strconv.Itoa(1)
+			num := strconv.Itoa(i)
 			fmt.Printf(formatStr, num)
 			fmt.Println(string(keys[i]))
 		}
 		startKey = string(keys[lines-1])
-		fmt.Println(`Type "it" for more`)
+		if startKey != "" {
+			fmt.Println(`Type "it" for more`)
+		}
 	}
 }
